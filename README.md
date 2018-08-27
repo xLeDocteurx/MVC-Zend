@@ -2,7 +2,7 @@
 Exercice MVC avec le framework PHP Zend
 
 
-## Le Taiga :
+## Le Taiga :
 https://tree.taiga.io/project/51m0n2063r-plate-forme-getion-demprunt-de-films/
 
 ## Le diagramme de cas d'utilisation
