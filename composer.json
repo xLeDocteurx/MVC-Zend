@@ -1,0 +1,14 @@
+{
+    "name": "simplon-stgau-dreamteam/semaine20-mvc-zend",
+    "description": "exercice du mvc avec le framework php Zend",
+    "authors": [
+        {
+            "name": "xLeDocteurx",
+            "email": "lenoirc.fr@gmail.com"
+        }
+    ],
+    "require": {
+        "zendframework/zendframework": "^3.0",
+        "zendframework/zend-mvc": "^3.1"
+    }
+}
