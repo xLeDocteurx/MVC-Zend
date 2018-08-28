@@ -14,11 +14,11 @@
 return [
     'db' => [
         'driver' => 'Pdo',
-        'dsn'    => 'mysql:dbname=zend_test;host=localhost',
+        'dsn' => 'mysql:dbname=zend; host=den1.mysql5.gear.host',
         'driver_options' => array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
         ),
-        'username' => 'root',
-        'password' => '314100ab',
+        'username' => 'zend',
+        'password' => 'Eb47m~p4VSi~',
     ],
 ];
