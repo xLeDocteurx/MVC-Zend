@@ -10,19 +10,21 @@ $this->headTitle($title);
 </p>
 
 <table class="table">
-<tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>&nbsp;</th>
-</tr>
+
+
 <?php foreach ($albums as $album) : ?>
-    <tr>
-        <td><?= $this->escapeHtml($album->title) ?></td>
-        <td><?= $this->escapeHtml($album->artist) ?></td>
-        <td>
+<div class="col-sm-3">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><?= $this->escapeHtml($album->title) ?></h5>
+    <p class="card-text"><?= $this->escapeHtml($album->artist) ?></p>
+    <a href="#" class="btn btn-primary">Ajout panier</a>
+  </div>
+  
             <a class="btn btn-warning" href="<?= $this->url('album', ['action' => 'edit', 'id' => $album->id]) ?>">Edit</a>
             <a class="btn btn-danger" href="<?= $this->url('album', ['action' => 'delete', 'id' => $album->id]) ?>">Delete</a>
-        </td>
-    </tr>
+</div>        
+</div>
 <?php endforeach; ?>
 </table>
