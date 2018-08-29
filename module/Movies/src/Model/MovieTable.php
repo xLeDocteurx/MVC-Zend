@@ -1,11 +1,10 @@
 <?php
-
-namespace Album\Model;
+namespace Movies\Model;
 
 use RuntimeException;
 use Zend\Db\TableGateway\TableGatewayInterface;
 
-class AlbumTable
+class MoviesTable
 {
     private $tableGateway;
 
@@ -19,7 +18,7 @@ class AlbumTable
         return $this->tableGateway->select();
     }
 
-    public function getAlbum($id)
+    public function getMovies($id)
     {
         $id = (int) $id;
         $rowset = $this->tableGateway->select(['id' => $id]);
@@ -34,23 +33,29 @@ class AlbumTable
         return $row;
     }
 
-    public function saveAlbum(Album $album)
+    public function saveMovies(Movies $movies)
     {
         $data = [
-            'artist' => $album->artist,
-            'title'  => $album->title,
+            'name' => $movies->name,
+            'image'  => $movies->image,
+            'summary'  => $movies->summary,
+            'title'  => $movies->title,
+            'link'  => $movies->link,
+            'artist'  => $movies->artist,
+            'category'  => $movies->category,
+            'date'  => $movies->date,
         ];
 
-        $id = (int) $album->id;
+        $id = (int) $movies->id;
 
         if ($id === 0) {
             $this->tableGateway->insert($data);
             return;
         }
 
-        if (! $this->getAlbum($id)) {
+        if (! $this->getMovies($id)) {
             throw new RuntimeException(sprintf(
-                'Cannot update album with identifier %d; does not exist',
+                'Cannot update movie with identifier %d; does not exist',
                 $id
             ));
         }
@@ -58,10 +63,8 @@ class AlbumTable
         $this->tableGateway->update($data, ['id' => $id]);
     }
 
-    public function deleteAlbum($id)
+    public function deleteMovies($id)
     {
         $this->tableGateway->delete(['id' => (int) $id]);
     }
 }
-
-?>

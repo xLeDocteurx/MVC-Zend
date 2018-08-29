@@ -1,0 +1,39 @@
+<?php
+
+$title = 'Movies';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a class="btn btn-success" href="<?= $this->url('movies', ['action' => 'add']) ?>">Add new movie</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Image</th>
+    <th>Summary</th>
+    <th>Link</th>
+    <th>Artist</th>
+    <th>Category</th>
+    <th>Date</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($movies as $movie) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($movie->name) ?></td>
+        <td><?= $this->escapeHtml($movie->title) ?></td>
+        <td><?= $this->escapeHtml($movie->image) ?></td>
+        <td><?= $this->escapeHtml($movie->summary) ?></td>
+        <td><?= $this->escapeHtml($movie->link) ?></td>
+        <td><?= $this->escapeHtml($movie->artist) ?></td>
+        <td><?= $this->escapeHtml($movie->category) ?></td>
+        <td><?= $this->escapeHtml($movie->date) ?></td>
+        <td>
+            <a class="btn btn-warning" href="<?= $this->url('movie', ['action' => 'edit', 'id' => $movie->id]) ?>">Edit</a>
+            <a class="btn btn-danger" href="<?= $this->url('movie', ['action' => 'delete', 'id' => $movie->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
