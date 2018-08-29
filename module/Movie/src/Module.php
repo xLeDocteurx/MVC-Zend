@@ -1,6 +1,6 @@
 <?php 
 
-namespace Album;
+namespace Movie;
 
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
@@ -19,15 +19,15 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Model\AlbumTable::class => function($container) {
-                    $tableGateway = $container->get(Model\AlbumTableGateway::class);
-                    return new Model\AlbumTable($tableGateway);
+                Model\MovieTable::class => function($container) {
+                    $tableGateway = $container->get(Model\MovieTableGateway::class);
+                    return new Model\MovieTable($tableGateway);
                 },
-                Model\AlbumTableGateway::class => function ($container) {
+                Model\MovieTableGateway::class => function ($container) {
                     $dbAdapter = $container->get(AdapterInterface::class);
                     $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Model\Album());
-                    return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Movie());
+                    return new TableGateway('movie', $dbAdapter, null, $resultSetPrototype);
                 },
             ],
         ];
@@ -37,9 +37,9 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Controller\AlbumController::class => function($container) {
-                    return new Controller\AlbumController(
-                        $container->get(Model\AlbumTable::class)
+                Controller\MovieController::class => function($container) {
+                    return new Controller\MovieController(
+                        $container->get(Model\MovieTable::class)
                     );
                 },
             ],

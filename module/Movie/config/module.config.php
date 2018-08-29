@@ -1,6 +1,6 @@
 <?php
 
-namespace Album;
+namespace Movie;
 
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
@@ -9,23 +9,23 @@ return [
 
     // 'controllers' => [
     //     'factories' => [
-    //         Controller\AlbumController::class => InvokableFactory::class,
+    //         Controller\MovieController::class => InvokableFactory::class,
     //     ],
     // ],
 
     // The following section is new and should be added to your file:
     'router' => [
         'routes' => [
-            'album' => [
+            'movie' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route' => '/album[/:action[/:id]]',
+                    'route' => '/movie[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
                     ],
                     'defaults' => [
-                        'controller' => Controller\AlbumController::class,
+                        'controller' => Controller\MovieController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -35,7 +35,7 @@ return [
 
     'view_manager' => [
         'template_path_stack' => [
-            'album' => __DIR__ . '/../view',
+            'movie' => __DIR__ . '/../view',
         ],
     ],
 ];

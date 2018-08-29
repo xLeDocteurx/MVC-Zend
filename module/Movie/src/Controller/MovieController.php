@@ -1,31 +1,31 @@
 <?php
 
-namespace Album\Controller;
+namespace Movie\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-use Album\Model\AlbumTable;
-use Album\Form\AlbumForm;
-use Album\Model\Album;
+use Movie\Model\MovieTable;
+use Movie\Form\MovieForm;
+use Movie\Model\Movie;
 
-class AlbumController extends AbstractActionController {
+class MovieController extends AbstractActionController {
 
     private $table;
 
-    public function __construct (AlbumTable $table) {
+    public function __construct (MovieTable $table) {
         $this->table = $table;
     }
 
     public function indexAction () {
         return new ViewModel([
-            'albums' => $this->table->fetchAll(),
+            'movies' => $this->table->fetchAll(),
         ]);
     }
     
     public function addAction()
     {
-        $form = new AlbumForm();
+        $form = new MovieForm();
         $form->get('submit')->setValue('Add');
 
         $request = $this->getRequest();
@@ -34,17 +34,17 @@ class AlbumController extends AbstractActionController {
             return ['form' => $form];
         }
 
-        $album = new Album();
-        $form->setInputFilter($album->getInputFilter());
+        $movie = new Movie();
+        $form->setInputFilter($movie->getInputFilter());
         $form->setData($request->getPost());
 
         if (! $form->isValid()) {
             return ['form' => $form];
         }
 
-        $album->exchangeArray($form->getData());
-        $this->table->saveAlbum($album);
-        return $this->redirect()->toRoute('album');
+        $movie->exchangeArray($form->getData());
+        $this->table->saveMovie($movie);
+        return $this->redirect()->toRoute('movie');
     }
 
     public function editAction()
@@ -52,20 +52,20 @@ class AlbumController extends AbstractActionController {
         $id = (int) $this->params()->fromRoute('id', 0);
 
         if (0 === $id) {
-            return $this->redirect()->toRoute('album', ['action' => 'add']);
+            return $this->redirect()->toRoute('movie', ['action' => 'add']);
         }
 
-        // Retrieve the album with the specified id. Doing so raises
-        // an exception if the album is not found, which should result
+        // Retrieve the movie with the specified id. Doing so raises
+        // an exception if the movie is not found, which should result
         // in redirecting to the landing page.
         try {
-            $album = $this->table->getAlbum($id);
+            $movie = $this->table->getMovie($id);
         } catch (\Exception $e) {
-            return $this->redirect()->toRoute('album', ['action' => 'index']);
+            return $this->redirect()->toRoute('movie', ['action' => 'index']);
         }
 
-        $form = new AlbumForm();
-        $form->bind($album);
+        $form = new MovieForm();
+        $form->bind($movie);
         $form->get('submit')->setAttribute('value', 'Edit');
 
         $request = $this->getRequest();
@@ -75,24 +75,24 @@ class AlbumController extends AbstractActionController {
             return $viewData;
         }
 
-        $form->setInputFilter($album->getInputFilter());
+        $form->setInputFilter($movie->getInputFilter());
         $form->setData($request->getPost());
 
         if (! $form->isValid()) {
             return $viewData;
         }
 
-        $this->table->saveAlbum($album);
+        $this->table->saveMovie($movie);
 
-        // Redirect to album list
-        return $this->redirect()->toRoute('album', ['action' => 'index']);
+        // Redirect to movie list
+        return $this->redirect()->toRoute('movie', ['action' => 'index']);
     }
 
     public function deleteAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('album');
+            return $this->redirect()->toRoute('movie');
         }
 
         $request = $this->getRequest();
@@ -101,16 +101,16 @@ class AlbumController extends AbstractActionController {
 
             if ($del == 'Yes') {
                 $id = (int) $request->getPost('id');
-                $this->table->deleteAlbum($id);
+                $this->table->deleteMovie($id);
             }
 
-            // Redirect to list of albums
-            return $this->redirect()->toRoute('album');
+            // Redirect to list of movies
+            return $this->redirect()->toRoute('movie');
         }
 
         return [
             'id'    => $id,
-            'album' => $this->table->getAlbum($id),
+            'movie' => $this->table->getmMovie($id),
         ];
     }
 }

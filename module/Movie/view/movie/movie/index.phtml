@@ -1,0 +1,28 @@
+<?php
+// module/Movie/view/movie/movie/index.phtml:
+
+$title = 'My movies';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a class="btn btn-success" href="<?= $this->url('movie', ['action' => 'add']) ?>">Add new movie</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($movies as $movie) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($movie->title) ?></td>
+        <td><?= $this->escapeHtml($movie->artist) ?></td>
+        <td>
+            <a class="btn btn-warning" href="<?= $this->url('movie', ['action' => 'edit', 'id' => $movie->id]) ?>">Edit</a>
+            <a class="btn btn-danger" href="<?= $this->url('movie', ['action' => 'delete', 'id' => $movie->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
