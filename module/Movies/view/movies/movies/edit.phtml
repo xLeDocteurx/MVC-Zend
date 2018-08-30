@@ -1,0 +1,104 @@
+<?php
+
+
+$title = 'Edit movie';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$name = $form->get('name');
+$name->setAttribute('class', 'form-control');
+$name->setAttribute('placeholder', 'Movie name');
+
+$title = $form->get('title');
+$title->setAttribute('class', 'form-control');
+$title->setAttribute('placeholder', 'Movie title');
+
+$image = $form->get('image');
+$image->setAttribute('class', 'form-control');
+$image->setAttribute('placeholder', 'Movie image');
+
+$summary = $form->get('summary');
+$summary->setAttribute('class', 'form-control');
+$summary->setAttribute('placeholder', 'Movie summary');
+
+$link = $form->get('link');
+$link->setAttribute('class', 'form-control');
+$link->setAttribute('placeholder', 'Movie link');
+
+$artist = $form->get('artist');
+$artist->setAttribute('class', 'form-control');
+$artist->setAttribute('placeholder', 'Artist');
+
+$category = $form->get('category');
+$category->setAttribute('class', 'form-control');
+$category->setAttribute('placeholder', 'Movie category');
+
+$date = $form->get('date');
+$date->setAttribute('class', 'form-control');
+$date->setAttribute('placeholder', 'Movie date');
+
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('movies', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($name) ?>
+    <?= $this->formHidden($name) ?>
+    <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($title) ?>
+    <?= $this->formElement($title) ?>
+    <?= $this->formElementErrors()->render($title, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($image) ?>
+    <?= $this->formElement($image) ?>
+    <?= $this->formElementErrors()->render($image, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($summary) ?>
+    <?= $this->formElement($summary) ?>
+    <?= $this->formElementErrors()->render($summary, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($link) ?>
+    <?= $this->formElement($link) ?>
+    <?= $this->formElementErrors()->render($link, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($artist) ?>
+    <?= $this->formElement($artist) ?>
+    <?= $this->formElementErrors()->render($artist, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($category) ?>
+    <?= $this->formElement($category) ?>
+    <?= $this->formElementErrors()->render($category, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($date) ?>
+    <?= $this->formElement($date) ?>
+    <?= $this->formElementErrors()->render($date, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
