@@ -52,7 +52,7 @@ echo $this->form()->openTag($form);
 ?>
 <div class="form-group">
     <?= $this->formLabel($name) ?>
-    <?= $this->formElement($name) ?>
+    <?= $this->formHidden($name) ?>
     <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
 </div>
 
