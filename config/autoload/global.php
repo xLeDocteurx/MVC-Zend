@@ -21,8 +21,9 @@
         'username' => 'zend',
         'password' => 'Eb47m~p4VSi~',
     ],
-]; */
-
+];
+ */
+// indentifiants DB
 return [
     'db' => [
         'driver' => 'Pdo',

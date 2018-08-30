@@ -31,8 +31,8 @@ $this->headTitle($title);
         <td><?= $this->escapeHtml($movie->category) ?></td>
         <td><?= $this->escapeHtml($movie->date) ?></td>
         <td>
-            <a class="btn btn-warning" href="<?= $this->url('movie', ['action' => 'edit', 'id' => $movie->id]) ?>">Edit</a>
-            <a class="btn btn-danger" href="<?= $this->url('movie', ['action' => 'delete', 'id' => $movie->id]) ?>">Delete</a>
+            <a class="btn btn-warning" href="<?= $this->url('movies', ['action' => 'edit', 'id' => $movie->id]) ?>">Edit</a>
+            <a class="btn btn-danger" href="<?= $this->url('movies', ['action' => 'delete', 'id' => $movie->id]) ?>">Delete</a>
         </td>
     </tr>
 <?php endforeach; ?>
