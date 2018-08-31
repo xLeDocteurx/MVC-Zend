@@ -1,0 +1,43 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'My albums';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a class="btn btn-success" href="<?= $this->url('album', ['action' => 'add']) ?>">Add new album</a>
+</p>
+
+<table class="table">
+
+
+<?php foreach ($movies as $movie) : ?>
+
+<div class="card-deck">
+    <div class="col-sm-6 col-md-4">
+        <div class="panel panel-default"  >
+            <div class="panel-heading text-center">
+                 <img class="panel-img" src="<?= ($this->escapeHtml($movie->image)? $this->escapeHtml($movie->image): "http://fr.web.img2.acsta.net/c_215_290/commons/v9/common/empty/empty.png") ?>" alt="ERROR">
+            </div>
+        <div class="panel-body">
+             <h3 class="card-title"><?= $this->escapeHtml($movie->name) ?></h3>
+    
+    <p class="card-text"><?= $this->escapeHtml($movie->title) ?></p>
+    <p class="card-text"><b>Synopsis : </b><?= $this->escapeHtml($movie->summary) ?></P>
+    <p class="card-text"><b>Réalisateur : </b><?= $this->escapeHtml($movie->artist) ?></p>
+    <p class="card-text"><b>Lien : </b><?= $this->escapeHtml($movie->link) ?> </p>
+    <p class="card-text"><b>Date de sortie : </b><?= $this->escapeHtml($movie->date) ?></p>
+    <div class="panel-heading text-center">
+    <a href="#" class="btn btn-primary">Ajout panier</a>
+    </div>
+  
+            <a class="btn btn-warning" href="<?= $this->url('movies', ['action' => 'edit', 'id' => $movie->id]) ?>">Edit</a>
+            <a class="btn btn-danger" href="<?= $this->url('movies', ['action' => 'delete', 'id' => $movie->id]) ?>">Delete</a>
+                  </div>
+            </div>        
+      </div>
+</div>
+
+<?php endforeach; ?>
+</table>
