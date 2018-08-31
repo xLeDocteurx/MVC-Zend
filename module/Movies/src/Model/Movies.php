@@ -22,6 +22,7 @@ class Movies
     public $artist;
     public $category;
     public $date;
+    public $duree;
 
     private $inputFilter;
 
@@ -36,6 +37,7 @@ class Movies
         $this->artist = !empty($data['artist']) ? $data['artist'] : null;
         $this->category = !empty($data['category']) ? $data['category'] : null;
         $this->date = !empty($data['date']) ? $data['date'] : null;
+        $this->duree = !empty($data['duree']) ? $data['duree'] : null;
     }
 
     public function setInputFilter(InputFilterInterface $inputFilter)
@@ -213,7 +215,16 @@ $inputFilter->add([
         ],
     ],
 ]);
-//
+//duree
+$inputFilter->add([
+    'name' => 'duree',
+    'required' => true,
+    'filters' => [
+        ['name' => ToInt::class],
+    ],
+]);
+
+
         $this->inputFilter = $inputFilter;
         return $this->inputFilter;
     }
@@ -230,6 +241,7 @@ $inputFilter->add([
             'artist' => $this->artist,
             'category' => $this->category,
             'date' => $this->date,
+            'duree' => $this->duree,
         ];
     }
 }

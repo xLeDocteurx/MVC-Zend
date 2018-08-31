@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS `movies` (
     `artist` VARCHAR(255),
     `category` VARCHAR(255),
     `date` DATE,
+    `duree` INT,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
