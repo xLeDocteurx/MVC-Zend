@@ -43,6 +43,14 @@ class MoviesController extends AbstractActionController {
         }
 
         $movies->exchangeArray($form->getData());
+
+        // Get data from omdbapi
+        $movieName = $movies->name;
+        $omdbMovie = $this->getOmdbapi($movieName);
+        $omdbMovieArr = $this->getApiValues($omdbMovie);
+        print_r($omdbMovieArr);
+        $movies->exchangeArray($omdbMovieArr);
+
         $this->table->saveMovies($movies);
         return $this->redirect()->toRoute('movies');
     }
@@ -115,11 +123,11 @@ class MoviesController extends AbstractActionController {
     }
 
     // Get a movie's data from omdbapi
-    public function getOmdbapi($movie){
+    public function getOmdbapi($name){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "http://www.omdbapi.com/?apikey=abe1179d&t=%22$movie%22&plot=short",
+            CURLOPT_URL => "http://www.omdbapi.com/?apikey=abe1179d&t=%22$name%22&plot=short",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -136,6 +144,24 @@ class MoviesController extends AbstractActionController {
 
         $response = json_decode($response);
         return $response;
+    }
+
+    // Fill movie's data from omdbapi
+    public function getApiValues($response){
+        $name = $response->Title;
+        $image = $response->Poster;
+        $summary = $response->Plot;
+        $summary = str_replace("\"", "", $summary);
+        $title = $response->Title . " - " . $response->Director;
+        $link = $response->Website;
+        $artist = $response->Director;
+        $category = $response->Genre;
+        $date = $response->Released;
+        $duree = $response->Runtime;
+        preg_match_all('!\d+!', $duree, $duree);
+        $duree = $duree[0][0];
+
+        return ['name' => $name, 'image' => $image, 'summary' => $summary, 'title' => $title, 'link' => $link, 'artist' => $artist, 'category' => $category, 'date' => $date, 'duree' => $duree];
     }
 }
 
