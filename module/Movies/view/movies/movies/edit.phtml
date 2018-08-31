@@ -1,11 +1,19 @@
 <?php
 
 
-$title = 'Edit movie';
-$this->headTitle($title);
-?>
-<h1><?= $this->escapeHtml($title) ?></h1>
+// $title = 'Edit movie : ';
+// /* $name = $form->get('name');
+// print_r($name); */
+// $this->headTitle($title);
+// ?>
+<!-- <h1><//?= $this->escapeHtml($title) ?></h1>-->
+
 <?php
+// $header = 'Edit movie : ';
+// $this->headTitle($header);
+echo '<h1>' . 'Edit Movie : ' . $this->escapeHtml($movies->title) . '</h1>';
+
+
 $name = $form->get('name');
 $name->setAttribute('class', 'form-control');
 $name->setAttribute('placeholder', 'Movie name');
@@ -38,6 +46,10 @@ $date = $form->get('date');
 $date->setAttribute('class', 'form-control');
 $date->setAttribute('placeholder', 'Movie date');
 
+$duree = $form->get('duree');
+$duree->setAttribute('class', 'form-control');
+$duree->setAttribute('placeholder', 'Movie duree');
+
 
 $submit = $form->get('submit');
 $submit->setAttribute('class', 'btn btn-primary');
@@ -51,8 +63,8 @@ $form->prepare();
 echo $this->form()->openTag($form);
 ?>
 <div class="form-group">
-    <?= $this->formLabel($name) ?>
-    <?= $this->formElement($name) ?>
+    <?= $this->formHidden($name) ?>
+    <?= $this->formHidden($name) ?>
     <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
 </div>
 
@@ -96,6 +108,12 @@ echo $this->form()->openTag($form);
     <?= $this->formLabel($date) ?>
     <?= $this->formElement($date) ?>
     <?= $this->formElementErrors()->render($date, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($duree) ?>
+    <?= $this->formElement($duree) ?>
+    <?= $this->formElementErrors()->render($duree, ['class' => 'help-block']) ?>
 </div>
 
 <?php
