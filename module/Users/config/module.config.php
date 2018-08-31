@@ -9,7 +9,7 @@ return [
 
     // 'controllers' => [
     //     'factories' => [
-    //         Controller\MoviesController::class => InvokableFactory::class,
+    //         Controller\UsersController::class => InvokableFactory::class,
     //     ],
     // ],
 
@@ -40,7 +40,7 @@ return [
     ],
     'view_manager' => [
         'template_path_stack' => [
-            'movies' => __DIR__ . '/../view',
+            'users' => __DIR__ . '/../view',
         ],
     ],
 ];

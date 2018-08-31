@@ -29,6 +29,7 @@
         "psr-4": {
             "Application\\": "module/Application/src/",
             "Movies\\": "module/Movies/src/",
+            "Users\\": "module/Users/src/"
         }
     },
     "autoload-dev": {
