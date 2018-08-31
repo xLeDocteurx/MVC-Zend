@@ -1,10 +1,10 @@
 <?php
-namespace Movies\Model;
+namespace Users\Model;
 
 use RuntimeException;
 use Zend\Db\TableGateway\TableGatewayInterface;
 
-class MoviesTable
+class UsersTable
 {
     private $tableGateway;
 
@@ -18,7 +18,7 @@ class MoviesTable
         return $this->tableGateway->select();
     }
 
-    public function getMovies($id)
+    public function getUsers($id)
     {
         $id = (int) $id;
         $rowset = $this->tableGateway->select(['id' => $id]);
@@ -33,7 +33,7 @@ class MoviesTable
         return $row;
     }
 
-    public function registerMovies(Users $users) {
+    public function registerUsers(Users $users) {
 
         $data = [
             'username' => $users->username,
@@ -49,9 +49,9 @@ class MoviesTable
             return;
         }
 
-        if (! $this->getMovies($id)) {
+        if (! $this->getUsers($id)) {
             throw new RuntimeException(sprintf(
-                'Cannot update movie with identifier %d; does not exist',
+                'Cannot update user with identifier %d; does not exist',
                 $id
             ));
         }
@@ -59,29 +59,29 @@ class MoviesTable
         $this->tableGateway->update($data, ['id' => $id]);
     }
 
-    public function saveMovies(Movies $movies)
+    public function saveUsers(Users $users)
     {
         $data = [
-            'name' => $movies->name,
-            'image'  => $movies->image,
-            'summary'  => $movies->summary,
-            'title'  => $movies->title,
-            'link'  => $movies->link,
-            'artist'  => $movies->artist,
-            'category'  => $movies->category,
-            'date'  => $movies->date,
+            'name' => $users->name,
+            'image'  => $users->image,
+            'summary'  => $users->summary,
+            'title'  => $users->title,
+            'link'  => $users->link,
+            'artist'  => $users->artist,
+            'category'  => $users->category,
+            'date'  => $users->date,
         ];
 
-        $id = (int) $movies->id;
+        $id = (int) $users->id;
 
         if ($id === 0) {
             $this->tableGateway->insert($data);
             return;
         }
 
-        if (! $this->getMovies($id)) {
+        if (! $this->getUsers($id)) {
             throw new RuntimeException(sprintf(
-                'Cannot update movie with identifier %d; does not exist',
+                'Cannot update user with identifier %d; does not exist',
                 $id
             ));
         }
@@ -89,7 +89,7 @@ class MoviesTable
         $this->tableGateway->update($data, ['id' => $id]);
     }
 
-    public function deleteMovies($id)
+    public function deleteUsers($id)
     {
         $this->tableGateway->delete(['id' => (int) $id]);
     }

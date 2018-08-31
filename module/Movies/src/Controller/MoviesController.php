@@ -27,10 +27,6 @@ class MoviesController extends AbstractActionController {
         return new ViewModel();
     }
 
-    public function usersAction () {
-        return new ViewModel();
-    }
-
     public function indexAction () {
         return new ViewModel([
             'movies' => $this->table->fetchAll(),

@@ -1,12 +1,19 @@
 <?php
 
-namespace Application\Controller;
+namespace Users\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class AuthController extends AbstractActionController
+use Users\Model\UsersTable;
+use Users\Form\UsersForm;
+use Users\Model\Users;
+
+class UsersController extends AbstractActionController
 {
+
+    private $table;
+
     public function registerAction()
     {
         return new ViewModel();
