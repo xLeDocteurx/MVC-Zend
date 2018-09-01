@@ -11,7 +11,6 @@
  * file.
  */
 
-
 /* return [
     'db' => [
         'driver' => 'Pdo',

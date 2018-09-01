@@ -74,9 +74,17 @@ class MoviesForm extends Form
         // date
         $this->add([
             'name' => 'date',
-            'type' => 'text', // date ?
+            'type' => 'text', 
             'options' => [
                 'label' => 'Date',
+            ],
+        ]);
+         // duree
+         $this->add([
+            'name' => 'duree',
+            'type' => 'text',
+            'options' => [
+                'label' => 'duree',
             ],
         ]);
         // submit
@@ -88,5 +96,7 @@ class MoviesForm extends Form
                 'id'    => 'submitbutton',
             ],
         ]);
+       
+        
     }
 }
