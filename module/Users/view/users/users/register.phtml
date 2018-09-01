@@ -1,55 +1,64 @@
 <?php
-
-if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
-
-    $sha1_password = $_POST['password'];
-
-    $pdo = new PDO('mysql:host=den1.mysql2.gear.host;dbname=rentmovies','rentmovies','Gn2oZ4~1GCv?', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+$title = 'Register';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+// This provides a default CSS class and placeholder text for the title element:
+    $username = $form->get('username');
+    $username->setAttribute('class', 'form-control');
+    $username->setAttribute('placeholder', 'Username');
     
+    $email = $form->get('email');
+    $email->setAttribute('class', 'form-control');
+    $email->setAttribute('placeholder', 'Email');
     
-    $register = $pdo->prepare("INSERT INTO users (username, email, password, permission) VALUES ('".$_POST['username']."','".$_POST['email']."','".$sha1_password."', 0);");
-    $register->execute();
-
-    print_r($register);
-    print_r('<br>');
+    $password = $form->get('password');
+    $password->setAttribute('class', 'form-control');
+    $password->setAttribute('placeholder', 'Password');
     
-// } catch (PDOException $e) {
-    // print ('<h1>ERREUR : </h1>'. $e);
-// }
-// finally {
-	// header('location: http://localhost:8080'.$this->url('home'));
-	// header('location: http://localhost:8080/');
-// }
-} else { ?>
-
-<h1 class="text-center">Register</h1>
-
-<form class="" role="form" action="<?= $this->url('register') ?>" method="post">
-
-<div class="form-group">
-        <label style="margin-top: 25px;" class="col-sm-1 control-label" for="username">Username</label>
-        <div class="col-sm-11">
-            <input style="margin-top: 25px;" class="form-control" type="username" name="username" id="username" placeholder="Enter your username here">
-        </div>
-</div>
+    $permission = $form->get('permission');
+    $permission->setAttribute('class', 'form-control');
+    $permission->setAttribute('placeholder', 'Permission');
     
-<div class="form-group">
-        <label style="margin-top: 25px;" class="col-sm-1 control-label" for="email">Email</label>
-        <div class="col-sm-11">
-            <input style="margin-top: 25px;" class="form-control" type="email" name="email" id="email" placeholder="Enter your email here">
-        </div>
-</div>
+    $submit = $form->get('submit');
+    $submit->setAttribute('class', 'btn btn-primary');
     
-<div class="form-group">
-        <label style="margin-top: 25px;" class="col-sm-1 control-label" for="password">Password</label>
-        <div class="col-sm-11">
-            <input style="margin-top: 25px;" class="form-control" type="password" name="password" id="password" placeholder="Enter your password here">
-        </div>
-</div>
-<div class="text-center form-group">
-    <button style="margin-top: 50px;" type="submit" class="btn btn-success">Register</button>
-</div>
+    $form->setAttribute('action', $this->url('users', [
+        'action' => 'add',
+        'id'     => $id,
+    ]));
+    $form->prepare();
+    
+    echo $this->form()->openTag($form);
+    ?>
 
-</form>
+    <div class="form-group">
+        <?= $this->formLabel($username) ?>
+        <?= $this->formElement($username) ?>
+        <?= $this->formElementErrors()->render($username, ['class' => 'help-block']) ?>
+    </div>
 
-<?php } ?>
+    <div class="form-group">
+        <?= $this->formLabel($email) ?>
+        <?= $this->formElement($email) ?>
+        <?= $this->formElementErrors()->render($email, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($password) ?>
+        <?= $this->formElement($password) ?>
+        <?= $this->formElementErrors()->render($password, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($permission) ?>
+        <?= $this->formElement($permission) ?>
+        <?= $this->formElementErrors()->render($permission, ['class' => 'help-block']) ?>
+    </div>
+    
+    <?php
+    echo $this->formSubmit($submit);
+    echo $this->form()->closeTag();
+    ?>
+    </div>

@@ -47,5 +47,14 @@ class UsersForm extends Form
                 'label' => 'Permission',
             ],
         ]);
+        // submit
+        $this->add([
+            'name' => 'submit',
+            'type' => 'submit',
+            'attributes' => [
+                'value' => 'Go',
+                'id'    => 'submitbutton',
+            ],
+        ]);
     }
 }

@@ -15,6 +15,20 @@ return [
 
     // The following section is new and should be added to your file:
     'router' => [
+        'users' => [
+            'type'    => Segment::class,
+            'options' => [
+                'route' => '/users[/:action[/:id]]',
+                'constraints' => [
+                    'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    'id'     => '[0-9]+',
+                ],
+                'defaults' => [
+                    'controller' => Controller\UsersController::class,
+                    'action'     => 'index',
+                ],
+            ],
+        ],
         'routes' => [
             'register' => [
                 'type' => Segment::class,
