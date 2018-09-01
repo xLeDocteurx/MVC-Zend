@@ -99,121 +99,121 @@ class Movies
                 ],
             ],
         ]);
-// summary
-$inputFilter->add([
-    'name' => 'summary',
-    'required' => true,
-    'filters' => [
-        ['name' => StripTags::class],
-        ['name' => StringTrim::class],
-    ],
-    'validators' => [
-        [
-            'name' => StringLength::class,
-            'options' => [
-                'encoding' => 'UTF-8',
-                'min' => 1,
-                'max' => 1000,
+        // summary
+        $inputFilter->add([
+            'name' => 'summary',
+            'required' => true,
+            'filters' => [
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
-        ],
-    ],
-]);
-// title
-$inputFilter->add([
-    'name' => 'title',
-    'required' => true,
-    'filters' => [
-        ['name' => StripTags::class],
-        ['name' => StringTrim::class],
-    ],
-    'validators' => [
-        [
-            'name' => StringLength::class,
-            'options' => [
-                'encoding' => 'UTF-8',
-                'min' => 1,
-                'max' => 255,
+            'validators' => [
+                [
+                    'name' => StringLength::class,
+                    'options' => [
+                        'encoding' => 'UTF-8',
+                        'min' => 1,
+                        'max' => 1000,
+                    ],
+                ],
             ],
-        ],
-    ],
-]);
-// link
-$inputFilter->add([
-    'name' => 'link',
-    'required' => true,
-    'filters' => [
-        ['name' => StripTags::class],
-        ['name' => StringTrim::class],
-    ],
-    'validators' => [
-        [
-            'name' => StringLength::class,
-            'options' => [
-                'encoding' => 'UTF-8',
-                'min' => 1,
-                'max' => 1000,
+        ]);
+        // title
+        $inputFilter->add([
+            'name' => 'title',
+            'required' => true,
+            'filters' => [
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
-        ],
-    ],
-]);
-// artist
-$inputFilter->add([
-    'name' => 'artist',
-    'required' => true,
-    'filters' => [
-        ['name' => StripTags::class],
-        ['name' => StringTrim::class],
-    ],
-    'validators' => [
-        [
-            'name' => StringLength::class,
-            'options' => [
-                'encoding' => 'UTF-8',
-                'min' => 1,
-                'max' => 255,
+            'validators' => [
+                [
+                    'name' => StringLength::class,
+                    'options' => [
+                        'encoding' => 'UTF-8',
+                        'min' => 1,
+                        'max' => 255,
+                    ],
+                ],
             ],
-        ],
-    ],
-]);
-// category
-$inputFilter->add([
-    'name' => 'category',
-    'required' => true,
-    'filters' => [
-        ['name' => StripTags::class],
-        ['name' => StringTrim::class],
-    ],
-    'validators' => [
-        [
-            'name' => StringLength::class,
-            'options' => [
-                'encoding' => 'UTF-8',
-                'min' => 1,
-                'max' => 255,
+        ]);
+        // link
+        $inputFilter->add([
+            'name' => 'link',
+            'required' => true,
+            'filters' => [
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
-        ],
-    ],
-]);
-//date
-$inputFilter->add([
-    'name' => 'date',
-    'required' => true,
-    'filters' => [
-        ['name' => StripTags::class],
-        ['name' => StringTrim::class],
-    ],
-    'validators' => [
-        [
-            'name' => StringLength::class,
-            'options' => [
-                'encoding' => 'UTF-8',
-                'min' => 1,
-                'max' => 100,
+            'validators' => [
+                [
+                    'name' => StringLength::class,
+                    'options' => [
+                        'encoding' => 'UTF-8',
+                        'min' => 1,
+                        'max' => 1000,
+                    ],
+                ],
             ],
-        ],
-    ],
-]);
-//
+        ]);
+        // artist
+        $inputFilter->add([
+            'name' => 'artist',
+            'required' => true,
+            'filters' => [
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+            ],
+            'validators' => [
+                [
+                    'name' => StringLength::class,
+                    'options' => [
+                        'encoding' => 'UTF-8',
+                        'min' => 1,
+                        'max' => 255,
+                    ],
+                ],
+            ],
+        ]);
+        // category
+        $inputFilter->add([
+            'name' => 'category',
+            'required' => true,
+            'filters' => [
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+            ],
+            'validators' => [
+                [
+                    'name' => StringLength::class,
+                    'options' => [
+                        'encoding' => 'UTF-8',
+                        'min' => 1,
+                        'max' => 255,
+                    ],
+                ],
+            ],
+        ]);
+        //date
+        $inputFilter->add([
+            'name' => 'date',
+            'required' => true,
+            'filters' => [
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+            ],
+            'validators' => [
+                [
+                    'name' => StringLength::class,
+                    'options' => [
+                        'encoding' => 'UTF-8',
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+            ],
+        ]);
+        //
         $this->inputFilter = $inputFilter;
         return $this->inputFilter;
     }

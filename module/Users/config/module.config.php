@@ -38,6 +38,11 @@ return [
             ],
         ],
     ],
+    'controllers' => [
+        'factories' => [
+            Controller\UsersController::class => InvokableFactory::class,
+        ],
+    ],
     'view_manager' => [
         'template_path_stack' => [
             'users' => __DIR__ . '/../view',
