@@ -58,40 +58,8 @@ $this->headTitle($title);
         <?= $this->formElement($name) ?>
         <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
     </div>
-    
+
     <div class="form-group">
-        <?= $this->formLabel($title) ?>
-        <?= $this->formElement($title) ?>
-        <?= $this->formElementErrors()->render($title, ['class' => 'help-block']) ?>
-    </div>
-    
-    <div class="form-group">
-        <?= $this->formLabel($image) ?>
-        <?= $this->formElement($image) ?>
-        <?= $this->formElementErrors()->render($image, ['class' => 'help-block']) ?>
-    </div>
-    
-    <div class="form-group">
-        <?= $this->formLabel($summary) ?>
-        <?= $this->formElement($summary) ?>
-        <?= $this->formElementErrors()->render($summary, ['class' => 'help-block']) ?>
-    </div>
-    
-    <div class="form-group">
-        <?= $this->formLabel($link) ?>
-        <?= $this->formElement($link) ?>
-        <?= $this->formElementErrors()->render($link, ['class' => 'help-block']) ?>
-    </div>
-    
-    <div class="form-group">
-        <?= $this->formLabel($artist) ?>
-        <?= $this->formElement($artist) ?>
-        <?= $this->formElementErrors()->render($artist, ['class' => 'help-block']) ?>
-    </div>
-    
-    <div class="form-group">
-        <?= $this->formLabel($category) ?>
-        <?= $this->formElement($category) ?>
         <?= $this->formElementErrors()->render($category, ['class' => 'help-block']) ?>
     </div>
     
@@ -109,5 +77,6 @@ $this->headTitle($title);
     
     <?php
     echo $this->formSubmit($submit);
-    echo $this->formHidden($form->get('id'));
     echo $this->form()->closeTag();
+    ?>
+    </div>

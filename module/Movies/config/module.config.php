@@ -32,7 +32,6 @@ return [
             ],
         ],
     ],
-
     'view_manager' => [
         'template_path_stack' => [
             'movies' => __DIR__ . '/../view',

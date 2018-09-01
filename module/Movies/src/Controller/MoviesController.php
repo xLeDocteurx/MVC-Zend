@@ -12,9 +12,19 @@ use Movies\Model\Movies;
 class MoviesController extends AbstractActionController {
 
     private $table;
-
+    
     public function __construct (MoviesTable $table) {
         $this->table = $table;
+    }
+    
+    public function registerAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function connectAction()
+    {
+        return new ViewModel();
     }
 
     public function indexAction () {

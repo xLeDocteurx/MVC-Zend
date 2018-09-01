@@ -3,6 +3,13 @@ body {
     padding-bottom: 40px;
 }
 
+.form-spacer {
+
+    display: block;
+    height: 40px;
+
+}
+
 .zf-green {
     color: #68b604;
 }

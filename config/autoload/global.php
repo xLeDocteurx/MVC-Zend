@@ -11,19 +11,6 @@
  * file.
  */
 
-/* return [
-    'db' => [
-        'driver' => 'Pdo',
-        'dsn' => 'mysql:dbname=zend; host=den1.mysql5.gear.host',
-        'driver_options' => array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-        ),
-        'username' => 'zend',
-        'password' => 'Eb47m~p4VSi~',
-    ],
-];
- */
-// indentifiants DB
 return [
     'db' => [
         'driver' => 'Pdo',
@@ -35,3 +22,15 @@ return [
         'password' => 'Gn2oZ4~1GCv?',
     ],
 ];
+
+// return [
+//     'db' => [
+//         'driver' => 'Pdo',
+//         'dsn' => 'mysql:dbname=rentmovies; host=localhost',
+//         'driver_options' => array(
+//             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+//         ),
+//         'username' => 'root',
+//         'password' => '314100ab',
+//     ],
+// ];

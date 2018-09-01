@@ -30,4 +30,6 @@ return [
     'ZendDeveloperTools',
     'Application',
     'Movies',
+    'Users',
+    // 'Auth',
 ];
