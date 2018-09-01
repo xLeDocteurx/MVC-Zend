@@ -12,9 +12,7 @@ $this->headTitle($title);
 <tr>
     <th>Name</th>
     <th>Title</th>
-    <th>Image</th>
     <th>Summary</th>
-    <th>Link</th>
     <th>Artist</th>
     <th>Category</th>
     <th>Date</th>
@@ -25,9 +23,7 @@ $this->headTitle($title);
     <tr>
         <td><?= $this->escapeHtml($movie->name) ?></td>
         <td><?= $this->escapeHtml($movie->title) ?></td>
-        <td><?= $this->escapeHtml($movie->image) ?></td>
         <td><?= $this->escapeHtml($movie->summary) ?></td>
-        <td><?= $this->escapeHtml($movie->link) ?></td>
         <td><?= $this->escapeHtml($movie->artist) ?></td>
         <td><?= $this->escapeHtml($movie->category) ?></td>
         <td><?= $this->escapeHtml($movie->date) ?></td>
