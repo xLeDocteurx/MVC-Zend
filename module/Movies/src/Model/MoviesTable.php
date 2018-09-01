@@ -70,6 +70,7 @@ class MoviesTable
             'artist'  => $movies->artist,
             'category'  => $movies->category,
             'date'  => $movies->date,
+            'duree' => $movies->duree,
         ];
 
         $id = (int) $movies->id;

@@ -36,6 +36,10 @@ $this->headTitle($title);
     $date = $form->get('date');
     $date->setAttribute('class', 'form-control');
     $date->setAttribute('placeholder', 'Movie date');
+
+    $duree = $form->get('duree');
+    $duree->setAttribute('class', 'form-control');
+    $duree->setAttribute('placeholder', 'Movie duree');
     
     
     $submit = $form->get('submit');
@@ -56,9 +60,23 @@ $this->headTitle($title);
     </div>
 
     <div class="form-group">
+        <?= $this->formElementErrors()->render($category, ['class' => 'help-block']) ?>
+    </div>
+    
+    <div class="form-group">
+        <?= $this->formLabel($date) ?>
+        <?= $this->formElement($date) ?>
+        <?= $this->formElementErrors()->render($date, ['class' => 'help-block']) ?>
+    </div>
+
+     <div class="form-group">
+        <?= $this->formLabel($duree) ?>
+        <?= $this->formElement($duree) ?>
+        <?= $this->formElementErrors()->render($duree, ['class' => 'help-block']) ?>
+    </div>
+    
     <?php
     echo $this->formSubmit($submit);
-    echo $this->formHidden($form->get('id'));
     echo $this->form()->closeTag();
     ?>
     </div>
