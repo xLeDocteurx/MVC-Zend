@@ -2,7 +2,7 @@
 $title = 'Register';
 $this->headTitle($title);
 ?>
-<h1><?= $this->escapeHtml($title) ?></h1>
+<h1 class="text-center"><?= $this->escapeHtml($title) ?></h1>
 <?php
 // This provides a default CSS class and placeholder text for the title element:
     $username = $form->get('username');
@@ -22,10 +22,10 @@ $this->headTitle($title);
     $permission->setAttribute('placeholder', 'Permission');
     
     $submit = $form->get('submit');
-    $submit->setAttribute('class', 'btn btn-primary');
-    
+    $submit->setAttribute('class', 'btn btn-success');
+
     $form->setAttribute('action', $this->url('users', [
-        'action' => 'add',
+        'action' => 'register',
         'id'     => $id,
     ]));
     $form->prepare();
@@ -50,15 +50,11 @@ $this->headTitle($title);
         <?= $this->formElement($password) ?>
         <?= $this->formElementErrors()->render($password, ['class' => 'help-block']) ?>
     </div>
-
-    <div class="form-group">
-        <?= $this->formLabel($permission) ?>
-        <?= $this->formElement($permission) ?>
-        <?= $this->formElementErrors()->render($permission, ['class' => 'help-block']) ?>
-    </div>
     
-    <?php
-    echo $this->formSubmit($submit);
-    echo $this->form()->closeTag();
-    ?>
+        <div class="text-center">
+            <?php
+            echo $this->formSubmit($submit);
+            echo $this->form()->closeTag();
+            ?>
+        </div>
     </div>
