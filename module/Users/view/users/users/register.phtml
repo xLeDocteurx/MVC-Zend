@@ -20,13 +20,13 @@ $this->headTitle($title);
     $permission = $form->get('permission');
     $permission->setAttribute('class', 'form-control');
     $permission->setAttribute('placeholder', 'Permission');
-    
+
+    // This provides CSS classes for the submit button:
     $submit = $form->get('submit');
     $submit->setAttribute('class', 'btn btn-success');
 
     $form->setAttribute('action', $this->url('users', [
         'action' => 'register',
-        'id'     => $id,
     ]));
     $form->prepare();
     
