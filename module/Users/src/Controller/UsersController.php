@@ -23,7 +23,7 @@ class UsersController extends AbstractActionController
     public function registerAction()
     {
         $form = new UsersForm();
-        $form->get('submit')->setValue('Add');
+        $form->get('submit')->setValue('Register');
 
         $request = $this->getRequest();
 
